@@ -200,10 +200,29 @@ export default function Index() {
 ];
 
 
-  const announcements = [
-    { date: "15 Mai 2023", title: "Hackathon Annuel" },
-    { date: "22 Juin 2023", title: "Atelier Réseaux" }
-  ];
+ const announcements = [
+  {
+    title: "Hackathon Annuel",
+    dateDebut: "15 Mai 2023",
+    dateFin: "17 Mai 2023",
+    description: "Un hackathon de 48 heures où les participants développent des projets innovants.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/HackathonMeetup.png"
+  },
+  {
+    title: "Atelier Réseaux",
+    dateDebut: "22 Juin 2023",
+    dateFin: "23 Juin 2023",
+    description: "Atelier dédié aux fondamentaux des réseaux informatiques et à la cybersécurité.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/59/Networking_picture.png"
+  },
+  {
+    title: "Conférence IA",
+    dateDebut: "10 Septembre 2023",
+    dateFin: "12 Septembre 2023",
+    description: "Conférence sur l'intelligence artificielle et son impact dans le monde professionnel.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/17/Artificial_Intelligence_%26_AI_%26_Machine_Learning_-_30212411048.jpg"
+  }
+];
 
   return (
     <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
@@ -417,24 +436,49 @@ export default function Index() {
 
       {/* Formulaire */}
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4">
-          <div className="bg-gray-900 rounded-xl p-8 max-w-md w-full relative">
-            <button onClick={() => setShowForm(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white">
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-6 text-center">
-              {formType === "Join" ? "Rejoindre le Club" : "S'inscrire"}
-            </h2>
-            <form className="space-y-4">
-              <input type="text" placeholder="Nom complet" className="w-full p-3 bg-gray-800 rounded-lg"/>
-              <input type="email" placeholder="Email" className="w-full p-3 bg-gray-800 rounded-lg"/>
-              <button type="submit" className="w-full py-3 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors">
-                Envoyer
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4">
+    <div className="bg-gray-900 rounded-xl p-8 max-w-md w-full relative">
+      <button 
+        onClick={() => setShowForm(false)} 
+        className="absolute top-4 right-4 text-gray-400 hover:text-white"
+      >
+        ✕
+      </button>
+      
+      <h2 className="text-2xl font-bold mb-6 text-center">
+        {formType === "Join" ? "Rejoindre le Club" : "S'inscrire"}
+      </h2>
+      
+      <form className="space-y-4">
+        {/* Nom complet */}
+        <input type="text" placeholder="Nom complet" required 
+          className="w-full p-3 bg-gray-800 rounded-lg" />
+
+        {/* Email */}
+        <input type="email" placeholder="Email" required 
+          className="w-full p-3 bg-gray-800 rounded-lg" />
+
+        {/* Numéro de téléphone */}
+        <input type="tel" placeholder="Numéro de téléphone" required 
+          className="w-full p-3 bg-gray-800 rounded-lg" />
+
+        {/* Classe */}
+        <input type="text" placeholder="Classe (ex: DD104)" required 
+          className="w-full p-3 bg-gray-800 rounded-lg" />
+
+        {/* Institution */}
+        <input type="text" placeholder="Institution (ex: ISFO)" required 
+          className="w-full p-3 bg-gray-800 rounded-lg" />
+
+        {/* Bouton d'envoi */}
+        <button type="submit" className="w-full py-3 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors">
+          Envoyer
+        </button>
+      </form>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
